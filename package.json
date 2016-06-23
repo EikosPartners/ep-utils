@@ -1,6 +1,6 @@
 {
   "name": "ep-utils",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Utilities for doing stuff in JavaScript (backend or frontend) in our repos",
   "main": "index.js",
   "scripts": {
@@ -25,6 +25,8 @@
     "path": "^0.12.7"
   },
   "dependencies": {
+    "lodash": "^4.13.1",
+    "moment": "^2.13.0",
     "winston": "^2.2.0"
   }
 }

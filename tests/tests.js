@@ -10,9 +10,19 @@ describe('All tests', function () {
   it('should have fsWrapper', function () {
     expect(utils).to.have.property('fsWrapper');
     expect(utils.fsWrapper).to.be.an('object');
+    expect(utils.fsWrapper).to.have.property('jsonToFile');
+    expect(utils.fsWrapper.jsonToFile).to.be.a('function');
   });
   it('should have logger', function () {
     expect(utils).to.have.property('logger');
     expect(utils.logger).to.be.an('object');
+  });
+  it('should have sortAndFilter', function () {
+    expect(utils).to.have.property('sortAndFilter');
+    expect(utils.sortAndFilter).to.be.an('object');
+  });
+  it('should have dataUtils', function () {
+    expect(utils).to.have.property('dataUtils');
+    expect(utils.dataUtils).to.be.an('object');
   });
 });
