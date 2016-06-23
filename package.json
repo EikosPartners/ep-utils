@@ -4,7 +4,8 @@
   "description": "Utilities for doing stuff in JavaScript (backend or frontend) in our repos",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha tests/**/*.js --reporter spec -C --timeout 15000",
+    "test-coverage": "istanbul cover _mocha tests/**/*.js --print detail"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,12 @@
   "bugs": {
     "url": "https://github.com/EikosPartners/ep-utils/issues"
   },
-  "homepage": "https://github.com/EikosPartners/ep-utils#readme"
+  "homepage": "https://github.com/EikosPartners/ep-utils#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "path": "^0.12.7"
+  },
+  "dependencies": {
+    "winston": "^2.2.0"
+  }
 }
