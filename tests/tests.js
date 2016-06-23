@@ -1,9 +1,10 @@
 var chai = require('chai'),
   path = require('path'),
+  fs = require('fs'),
   utils = require(path.join(__dirname, '../index.js')),
   expect = chai.expect;
 
-describe('All tests', function () {
+describe('Existence tests', function () {
   it('should be an object', function () {
     expect(utils).to.be.an('object');
   });
@@ -24,5 +25,9 @@ describe('All tests', function () {
   it('should have dataUtils', function () {
     expect(utils).to.have.property('dataUtils');
     expect(utils.dataUtils).to.be.an('object');
+  });
+  it('should have setCacheHeaders', function () {
+    expect(utils).to.have.property('setCacheHeaders');
+    expect(utils.setCacheHeaders).to.be.an('object');
   });
 });

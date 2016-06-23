@@ -32,7 +32,7 @@ var _module;
             } else if (parsableHour < 12){
                 amPm = 'AM';
                 if (parsableHour === 0){
-                    rawHour == 12;
+                    rawHour = 12;
                 }
             }
 
@@ -137,76 +137,12 @@ module.exports = _module =  {
         // assumes words < numberofwords
         return words.splice(0, numberofWords).join(' ');
     },
-    dateFormattedDash: function (date) {
-        return date.getFullYear() + "-" + MonthFormat(date) + "-" + DayFormat(date);
-    },
-    dateFormattedLongSlash: function (date) {
-        return MonthFormat(date) + "/" + DayFormat(date) + "/" + date.getFullYear() + " " + TimeFormat(date);
-    },
-    dateFormattedLongSlashNoZone: function (date){
-        var rawDate = _module.dateFormattedLongSlash(date);
-
-        return rawDate.slice(0, rawDate.length - 4);
-    },
     toDateString : function(date){
-        if (!(typeof date.getMonth === 'function')){
+        if ((typeof date.getMonth !== 'function')){
             console.error('formatDate takes a date object');
         }
         var monthOffset = 1; // Month to string is off by 1 month
         return (date.getMonth() + monthOffset).toString() + '/' + date.getDate().toString() + '/' + date.getFullYear().toString();
-    },
-    updateArray: function (destination, source) {
-        var found = false;
-        destination.forEach(function (object) {
-            if (object.uid === source.uid) {
-                _.extend(object, source);
-                found = true;
-            }
-        }, this);
-
-        if (!found) {
-            destination.push(source);
-        }
-
-        return destination;
-    },
-    deleteFromArray: function (array, uid) {
-        var found = false,
-            newArray;
-        array.forEach(function (element) {
-            if (element.uid === uid) {
-                newArray = _.without(array, element);
-                found = true;
-            }
-        }, this);
-
-        if (!found) {
-            return "UID not found";
-        }
-        else {
-            return newArray;
-        }
-    },
-    appendSearchFilterForRole: function(search, role){
-         if(role ==='DC'){
-
-            if(!search.filters){
-                search.filters = {}
-            }
-
-            if(!search.filters.PoolStatusCode){
-                search.filters.PoolStatusCode = {value: "DF", op: "!=" }
-            } else {
-                if(!Array.isArray(search.filters.PoolStatusCode)){
-                    search.filters.PoolStatusCode  = [search.filters.PoolStatusCode];
-                }
-                // the line below breaks the filter when we pass in an array
-                // of values to search by, so commenting out for now
-
-                //search.filters.PoolStatusCode.push({value: "DF", op: "!=" });
-            }
-        }
-        return search;
     },
     // finds matches and replaces values,
     // if the replacement value was not found, it leaves it
