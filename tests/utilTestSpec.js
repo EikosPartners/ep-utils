@@ -14,10 +14,6 @@ describe('Existence tests', function () {
     expect(utils.fsWrapper).to.have.property('jsonToFile');
     expect(utils.fsWrapper.jsonToFile).to.be.a('function');
   });
-  it('should have logger', function () {
-    expect(utils).to.have.property('logger');
-    expect(utils.logger).to.be.an('object');
-  });
   it('should have sortAndFilter', function () {
     expect(utils).to.have.property('sortAndFilter');
     expect(utils.sortAndFilter).to.be.an('object');
@@ -29,5 +25,11 @@ describe('Existence tests', function () {
   it('should have setCacheHeaders', function () {
     expect(utils).to.have.property('setCacheHeaders');
     expect(utils.setCacheHeaders).to.be.an('object');
+  });
+  it('should have functionRegistry', function () {
+    expect(utils).to.have.property('functionRegistry');
+    expect(utils.functionRegistry).to.be.an('object');
+    expect(utils.functionRegistry).to.have.property('invoke');
+    expect(utils.functionRegistry).to.have.property('get');
   });
 });
