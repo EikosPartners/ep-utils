@@ -1,11 +1,15 @@
 {
   "name": "ep-utils",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "Utilities for doing stuff in JavaScript (backend or frontend) in our repos",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "mocha tests/**/*.js --reporter spec -C --timeout 15000",
-    "test-coverage": "istanbul cover _mocha tests/**/*.js --print detail"
+    "build": "babel src --presets babel-preset-es2015 --out-dir dist --source-maps",
+    "doc": "jsdoc -d ./doc/ src/ -r",
+    "prepublish": "npm run build && npm run test",
+    "postinstall": "copyup dist/*.js ./",
+    "test": "mocha test/**/*.js --reporter spec -C --timeout 15000",
+    "test-coverage": "istanbul cover _mocha test/**/*.js --print detail"
   },
   "repository": {
     "type": "git",
@@ -21,10 +25,18 @@
   },
   "homepage": "https://github.com/EikosPartners/ep-utils#readme",
   "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
     "chai": "^3.5.0",
-    "path": "^0.12.7"
+    "istanbul": "^0.4.4",
+    "js-doc": "^0.4.1",
+    "mocha": "^2.5.3",
+    "path": "^0.12.7",
+    "rimraf": "^2.5.2"
   },
   "dependencies": {
+    "copyfiles": "^1.0.0",
     "lodash": "^4.13.1",
     "moment": "^2.13.0"
   }

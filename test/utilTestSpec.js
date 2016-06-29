@@ -1,7 +1,7 @@
 var chai = require('chai'),
   path = require('path'),
   fs = require('fs'),
-  utils = require(path.join(__dirname, '../index.js')),
+  utils = require(path.join(__dirname, '../src/index.js')),
   expect = chai.expect;
 
 describe('Existence tests', function () {
@@ -31,5 +31,10 @@ describe('Existence tests', function () {
     expect(utils.functionRegistry).to.be.an('object');
     expect(utils.functionRegistry).to.have.property('invoke');
     expect(utils.functionRegistry).to.have.property('get');
+  });
+  it('should have parseRole', function () {
+    expect(utils).to.have.property('parseRole');
+    expect(utils.parseRole).to.be.an('object');
+    expect(utils.parseRole).to.have.property('parse');
   });
 });

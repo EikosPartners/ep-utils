@@ -1,7 +1,7 @@
 var chai = require('chai'),
   path = require('path'),
   fs = require('fs'),
-  utils = require(path.join(__dirname, '../index.js')),
+  utils = require(path.join(__dirname, '../src/index.js')),
   expect = chai.expect;
 
 describe('fsWrapper tests', function () {
