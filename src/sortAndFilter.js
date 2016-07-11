@@ -1,9 +1,6 @@
 var _module,
     utils = require('./dataUtils'),
-    _ = require('lodash'),
-    fsw = require('./fsWrapper'),
-    fs = require('fs');
-
+    _ = require('lodash');
 
 var compare = {
     '=': function (l, r) {
