@@ -1,6 +1,6 @@
 {
   "name": "ep-utils",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Utilities for doing stuff in JavaScript (backend or frontend) in our repos",
   "main": "dist/index.js",
   "scripts": {

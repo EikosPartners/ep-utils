@@ -1,7 +1,5 @@
 var _module,
-    _ = require('lodash'),
-    fsw = require('./fsWrapper');
-
+    _ = require('lodash');
 var ROLE_KEY = 'roleid';
 
 function parse(metadata, userRoles) {
