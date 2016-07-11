@@ -4,7 +4,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _module,
     utils = require('./dataUtils'),
-    _ = require('lodash');
+    _ = require('lodash'),
+    fsw = require('./fsWrapper'),
+    fs = require('fs');
 
 var compare = {
     '=': function _(l, r) {
