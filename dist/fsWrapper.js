@@ -22,6 +22,7 @@ module.exports = {
                 fs.writeFile(filename, string, function (err, data) {
                     if (err) {
                         callback({ "error": err });
+                        return;
                     }
                     callback(null, { "data": json });
                 });
