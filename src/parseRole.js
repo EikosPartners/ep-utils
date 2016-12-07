@@ -2,30 +2,33 @@ var _module,
     _ = require('lodash');
 var ROLE_KEY = 'roleid';
 
-function parse(metadata, userRoles) {
+function parse(metadata, userRoles, key = ROLE_KEY) {
     if (_.isArray(metadata)) {
-        return parseArray(metadata,userRoles);
+        return parseArray(metadata,userRoles,key);
     } else {
-        return parseObject(metadata,userRoles);
+        return parseObject(metadata,userRoles, key);
     }
 }
 
-function parseObject(metadata, userRoles) {
-    if (metadata[ROLE_KEY]) {
-        if (!applyRule(userRoles, metadata[ROLE_KEY], metadata)) {
+function parseObject(metadata, userRoles, key) {
+    
+    console.log(metadata);
+    
+    if (metadata[key]) {
+        if (!applyRule(userRoles, metadata[key], metadata)) {
             return null;
         }
 
-        delete metadata[ROLE_KEY];
+        delete metadata[key];
     }
 
     for (var property in metadata) {
         if (metadata.hasOwnProperty(property)) {
             if (_.isArray(metadata[property])) {
-                metadata[property] = parseArray(metadata[property], userRoles);
+                metadata[property] = parseArray(metadata[property], userRoles, key);
             }
             else if( (typeof metadata[property] === "object") && (metadata[property] !== null) ) {
-                metadata[property] = parseObject(metadata[property], userRoles);
+                metadata[property] = parseObject(metadata[property], userRoles, key);
             }
 
             if (metadata[property] === null) {
@@ -37,13 +40,13 @@ function parseObject(metadata, userRoles) {
     return metadata;
 }
 
-function parseArray(metadata, userRoles) {
+function parseArray(metadata, userRoles,key) {
     metadata = _(metadata).map(function (obj, index) {
         if (_.isArray(obj)) {
-            return parseArray(obj, userRoles);
+            return parseArray(obj, userRoles, key);
         }
         else if( (typeof obj === "object") && (obj !== null) ) {
-            return parseObject(obj, userRoles);
+            return parseObject(obj, userRoles, key);
         } else {
             return obj;
         }
