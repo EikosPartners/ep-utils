@@ -18,8 +18,6 @@ function parse(metadata, userRoles) {
 
 function parseObject(metadata, userRoles, key) {
 
-    console.log(metadata);
-
     if (metadata[key]) {
         if (!applyRule(userRoles, metadata[key], metadata)) {
             return null;
