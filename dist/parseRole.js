@@ -28,6 +28,9 @@ function parseObject(metadata, userRoles, key) {
 
     for (var property in metadata) {
         if (metadata.hasOwnProperty(property)) {
+            if (metadata[property] === null) {
+                continue;
+            }
             if (_.isArray(metadata[property])) {
                 metadata[property] = parseArray(metadata[property], userRoles, key);
             } else if (_typeof(metadata[property]) === "object" && metadata[property] !== null) {
