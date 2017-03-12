@@ -54,7 +54,7 @@ function parseArray(metadata, userRoles, key) {
     }).filter(function (obj) {
         return obj !== null;
     }).value();
-    return metadata.length === 0 ? null : metadata;
+    return metadata;
 }
 
 var ruleFunctions = {
