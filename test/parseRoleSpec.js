@@ -125,20 +125,22 @@ describe('parseRole tests', function () {
     let filtered = parseRole.parse(metadata, roles);
     expect(filtered).to.deep.equal(treeWithoutRoles);
   });
-  it('should get nothing if roles is empty array', function () {
+  it('should empty array if roles is empty array', function () {
     let roles = [];
     let metadata = _.cloneDeep(tree);
     let filtered = parseRole.parse(metadata, roles);
     expect(filtered).to.deep.equal({
-      "type": "globalNavigation"
+      "type": "globalNavigation",
+      "routes": []
     });
   });
-  it('should get nothing if roles is one element empty string', function () {
+  it('should get empty array if roles is one element empty string', function () {
     let roles = [''];
     let metadata = _.cloneDeep(tree);
     let filtered = parseRole.parse(metadata, roles);
     expect(filtered).to.deep.equal({
-      "type": "globalNavigation"
+      "type": "globalNavigation",
+      "routes": []
     });
   });
 });
